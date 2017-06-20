@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+    <div id="headerwrap">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-lg-6">
+  					<h1>Abra a boca para o mundo, diga o que você quiser</h1>
+  					<form class="form-inline" role="form" method="GET" action="{% url 'userRegister' %}">
+  					  <div class="form-group">
+  					    <input type="text" class="form-control" name="username" placeholder="Escolha um usuario" required="Insira seu usuario">
+  					  </div>
+  					  <button type="submit" class="btn btn-warning btn-lg">Registar!</button>
+  					</form>
+  				</div><!-- /col-lg-6 -->
+  				<div class="col-lg-6">
+  				</div><!-- /col-lg-6 -->
+          <img class="img-responsive" src="{% static 'img/megafone.png' %}" alt="">
+  			</div><!-- /row -->
+  		</div><!-- /container -->
+
+  	</div><!-- /headerwrap -->
+
+
+    <div class="container">
+  		<div class="row mt centered">
+  			<div class="col-lg-6 col-lg-offset-3">
+  				<h1>Say Anything<br/>qualquer coisa mesmo</h1>
+  				<h3>A grande jogada do Say Anything, como o nome sugere você pode falar o que quiser, e ninguem vai saber que foi você <3</h3>
+  			</div>
+  		</div><!-- /row -->
+
+  		<div class="row mt centered">
+  			<div class="col-lg-6">
+  				<img src="{% static 'img/suit.png' %}" width="180" height="300" alt="">
+  				<h4>1 - Anonimato</h4>
+  				<p>Não coletamos nem registramos nenhuma informação pessoal, a unica coisa que precisa é escolher um nome de usuario e a senha, mas cuidado, já que não coletamos nem seu e-mail, não é possivel pedir um reset de senha</p>
+  			</div><!--/col-lg-4 -->
+
+  			<div class="col-lg-6">
+  				<img src="{% static 'img/ball.png' %}" width="180" height="300" alt="">
+  				<h4>2 - Mensagens não são para sempre</h4>
+  				<p>Tudo que você postar ficara disponivel para todos os usuario verem, porém após uma hora, seu post sera excluido</p>
+
+  			</div><!--/col-lg-4 -->
+  		</div><!-- /row -->
+  	</div><!-- /container -->
+
+{% endblock %}

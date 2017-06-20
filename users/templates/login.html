@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block body %}
+<div id="headerwrap">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6">
+            <h1>Entre e fale o que quiser!</h1>
+            {%if error%}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+               <strong>Ops! </strong>{{error}}.
+            </div>
+            {%endif%}
+            <form class="form-inline" role="form" action="{% url 'userLogin' %}" method='POST'>
+               {% csrf_token %}
+               <div >
+                 <input type="text" name="username" class="form-control input-lg" placeholder="Username" required autofocus>
+               </div>
+               <div>
+                 <input type="password" name="password" class="form-control input-lg" placeholder="Password" required>
+               </div>
+               <div>
+                  <button type="submit" class="btn btn-warning btn-lg">Login!</button>
+               </div>
+            </form>
+         </div>
+         <!-- /col-lg-6 -->
+         <div class="col-lg-6">
+
+         </div>
+         <img class="img-responsive" src="{% static 'img/megafone.png' %}" alt="">
+
+         <!-- /col-lg-6 -->
+      </div>
+      <!-- /row -->
+   </div>
+   <!-- /container -->
+</div>
+<!-- /headerwrap -->
+{% endblock %}

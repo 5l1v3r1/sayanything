@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load humanize %}
+{% block body %}
+
+
+<div class="container">
+	<div class="row mt centered">
+		<div class="col-lg-8 col-lg-offset-2">
+			<h1>@{{ post.user_id.username }}</h1>
+			<h4>{{post.content}}</h4>
+			Postado {{post.create_at|naturaltime}}
+		</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+<hr>
+
+<div class="container">
+	<div class="row mt centered">
+		<div class="col-lg-8 col-lg-offset-2">
+
+			{%for comment in comments %}
+			<div class="panel panel-default">
+  <div class="panel-body">
+			<div class="media">
+			  <div class="media-body">
+			    <h4 class="media-heading">@{{ comment.user_comment.username }}</h4>
+					<p>{{ comment.content }}</p>
+					<p></p>
+			  </div>
+			</div>
+
+
+		</div>
+
+<div class="panel-footer">
+	Postado {{comment.create_at|naturaltime}}
+</div>
+</div>
+{% endfor %}
+{% if user.is_authenticated %}
+
+<form class="form-inline" role="form" action="{%url 'post' post.id%}" method='POST'>
+	 {% csrf_token %}
+	 <div class="col-lg-8 col-lg-offset-2">
+		 <textarea class="form-control" id="exampleTextarea" name="content" rows="3" maxlength='140'></textarea>
+		 <br>
+		 <br>
+		 <button type="submit" class="btn btn-success btn-lg">Comentar</button>
+	 </div>
+</form>
+{%else%}
+<h1>Quer comentar?<br/></h1>
+<h4>Se cadastre <a href="{% url 'userRegister' %}">aqui</a> para postar também</h4>
+{%endif%}
+
+		</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+{% endblock %}
